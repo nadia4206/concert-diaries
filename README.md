@@ -92,6 +92,7 @@ https://github.com/nadia4206/concert-diaries
 
 # Stretch Goals
 
+- Simultaneously create artist, venue, and show (currently an artist and a venue must exist to create a show)
 - Detailed individual concert view
     - more images
     - who did you go with?
