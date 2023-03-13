@@ -1,4 +1,6 @@
 # the concert diaries
+Phase 5 Flatiron SWE Project
+
 This app allows a user to keep track of the concerts they’ve attended. A user can:
 
 - View all concerts
