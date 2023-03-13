@@ -53,8 +53,7 @@ https://github.com/nadia4206/concert-diaries
 ![Screen Shot 2023-03-13 at 2 00 48 PM](https://user-images.githubusercontent.com/118000976/224797922-74e15680-f06a-41ab-9e20-fda8b241183c.png)
 
 # REACT components diagram
-![Screen Shot 2023-03-13 at 2 25 17 PM](https://user-images.githubusercontent.com/118000976/224798822-5501a563-b2d5-45cc-af01-5995019aa031.png)
-
+![Screen Shot 2023-03-13 at 2 51 22 PM](https://user-images.githubusercontent.com/118000976/224801111-bf82ea5c-dd0b-4f61-b460-30e77ab50a8a.png)
 
 # misc. questions
 
