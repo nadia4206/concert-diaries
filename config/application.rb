@@ -41,5 +41,7 @@ module ConcertDiaries
 
     config.action_dispatch.cookies_same_site_protection = :strict
 
+    # config.session_store :cookie_store, key: 'trial_tracker_app_session', same_site: :lax, secure: Rails.env.production?
+
   end
 end
