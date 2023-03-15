@@ -11,17 +11,17 @@ User.create!([
     {
         username: "the_chosen_one",
         email: "harry.potter@hogwarts.com",
-        password_digest: "abc123"
+        password: "abc123"
     },
     {
         username: "weasley_rocks",
         email: "ron.weasley@hogwarts.com",
-        password_digest: "abc123"
+        password: "abc123"
     },
     {
         username: "clever_witch",
         email: "hermione.grainger@hogwarts.com",
-        password_digest: "abc123"
+        password: "abc123"
     }
 ])
 
