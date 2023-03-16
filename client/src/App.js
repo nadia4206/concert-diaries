@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import MyConcerts from './components/MyConcerts';
 import AddNewConcert from './components/AddNewConcert';
@@ -12,17 +12,36 @@ import SignUp from "./components/SignUp"
 
 function App() {
 
+  let navigate = useNavigate();
+
   const [ user, setUser ] = useState(null);
+  const [ concerts, setConcerts ] = useState([])
 
   useEffect(() => {
-    fetch('/me').then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
+    fetch('/me')
+    .then(res => {
+      if(res.ok){
+        res.json().then(user => {
+          setUser(user)
+          navigate(`/${user.username}/concerts`)
+        })
+      } else {
+        setUser(null)
       }
-    });
-  }, []);
+    })
+  },[])
+
+  useEffect(() => {
+    fetch("/shows")
+    .then(res => res.json())
+    .then(concerts => setConcerts(concerts))
+}, [])
 
   const updateUser = (user) => setUser(user)
+
+  function handleLogout(){
+    setUser(null);
+  }
 
   return(
   <div>
@@ -40,42 +59,72 @@ function App() {
 
         <Route
           path="/:username/concerts"
-          element={<MyConcerts/>}
+          element={
+            <MyConcerts
+              onLogout={handleLogout}
+              updateUser={updateUser}
+              allConcerts={concerts}
+            />
+          }
         />
 
         <Route
-          path="/concerts/:id/edit"
-          element={<AddNewConcert/>}
-        />
-
-        <Route
-          path="/concert/new/:id"
-          element={<AddNewConcert/>}
+          path="/:username/concerts/:id/edit"
+          element={
+            <AddNewConcert
+              onLogout={handleLogout}
+            />
+          }
         />
 
         <Route
           path="/:username/artists"
-          element={<MyArtists/>}
+          element={
+            <MyArtists
+              onLogout={handleLogout}
+              updateUser={updateUser}
+            />
+          }
         />
 
         <Route
           path="/artist/new/:id"
-          element={<AddNewArtist/>}
+          element={
+            <AddNewArtist
+              onLogout={handleLogout}
+              updateUser={updateUser}
+            />
+          }
         />
 
         <Route
           path="/:username/venues"
-          element={<MyVenues/>}
+          element={
+            <MyVenues
+              onLogout={handleLogout}
+              updateUser={updateUser}
+              />
+            }
         />
 
         <Route
           path="/venue/new/:id"
-          element={<AddNewVenue/>}
+          element={
+            <AddNewVenue
+              onLogout={handleLogout}
+              updateUser={updateUser}
+            />
+          }
         />
 
         <Route
           path="/profile/edit/:id"
-          element={<EditProfile/>}
+          element={
+            <EditProfile
+              onLogout={handleLogout}
+              updateUser={updateUser}
+            />
+          }
         />
 
       </Routes>
