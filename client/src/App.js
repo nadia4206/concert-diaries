@@ -16,7 +16,10 @@ function App() {
 
   const [ user, setUser ] = useState(null);
   const [ concerts, setConcerts ] = useState([])
+  const [ artists, setArtists ] = useState([])
+  const [ venues, setVenues ] = useState([])
 
+  //keep current user logged in
   useEffect(() => {
     fetch('/me')
     .then(res => {
@@ -31,11 +34,27 @@ function App() {
     })
   },[])
 
+  //get all shows
   useEffect(() => {
     fetch("/shows")
     .then(res => res.json())
     .then(concerts => setConcerts(concerts))
 }, [])
+
+  //get all artists
+  useEffect(() => {
+    fetch("/artists")
+    .then(res => res.json())
+    .then(artists => setArtists(artists))
+  }, [])
+
+  //get all venues
+  useEffect(() => {
+    fetch("/venues")
+    .then(res => res.json())
+    .then(venues => setVenues(venues))
+  }, [])
+
 
   const updateUser = (user) => setUser(user)
 
@@ -83,6 +102,7 @@ function App() {
             <MyArtists
               onLogout={handleLogout}
               updateUser={updateUser}
+              allArtists={artists}
             />
           }
         />
@@ -103,6 +123,7 @@ function App() {
             <MyVenues
               onLogout={handleLogout}
               updateUser={updateUser}
+              allVenues={venues}
               />
             }
         />
