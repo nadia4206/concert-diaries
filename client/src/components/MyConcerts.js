@@ -1,6 +1,5 @@
 import React from 'react'
 import NavBar from './NavBar'
-import { useState, useEffect } from 'react';
 import ConcertCard from './ConcertCard';
 
 export default function MyConcerts({onLogout, updateUser, allConcerts}) {
@@ -16,7 +15,7 @@ export default function MyConcerts({onLogout, updateUser, allConcerts}) {
         <div>
             <NavBar onLogout={onLogout}/>
             <div>
-                <h1>my concerts</h1>
+                <h1>concerts</h1>
                 <div>{displayConcerts}</div>
             </div>
         </div>
