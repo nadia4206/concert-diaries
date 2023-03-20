@@ -34,7 +34,7 @@ class ShowsController < ApplicationController
     end
 
     def show_params
-        params.permit(:artist_id, :venue_id, :show_date, :highlight, :image_url)
+        params.permit(:user_id, :artist_id, :venue_id, :show_date, :highlight, :image_url)
     end
 
 end

@@ -78,6 +78,10 @@ function App() {
     setVenues([addVenue, ...venues])
   }
 
+  const addNewConcert = (addConcert) => {
+    setConcerts([addConcert, ...concerts])
+  }
+
   return(
   <div>
       <Routes>
@@ -111,6 +115,7 @@ function App() {
               allArtists={artists}
               allVenues={venues}
               allUsers={users}
+              onAddConcert={addNewConcert}
             />
           }
         />
