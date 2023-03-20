@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import ArtistCard from './ArtistCard';
+import { Link } from "react-router-dom";
 
 export default function MyArtists({allArtists, onLogout}) {
 
@@ -14,6 +15,13 @@ export default function MyArtists({allArtists, onLogout}) {
     return (
         <div>
             <NavBar onLogout={onLogout}/>
+            <div>
+                <Link to="/artist/new/:id">
+                    <button
+                        >add new artist
+                    </button>
+                </Link>
+            </div>
             <div>
                 <h1>artists</h1>
                 <div>{displayArtists}</div>
