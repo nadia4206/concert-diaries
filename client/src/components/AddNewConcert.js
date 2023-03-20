@@ -5,7 +5,7 @@ import UserList from './UserList';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function AddNewConcert({ allArtists, allVenues, allUsers }) {
+export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddConcert }) {
 
     const displayArtists = allArtists.map((artist, index) => (
         <ArtistList
@@ -67,7 +67,8 @@ export default function AddNewConcert({ allArtists, allVenues, allUsers }) {
             body: JSON.stringify(newConcert)
         })
         .then( res => res.json())
-        .then( data => console.log(data))
+        .then(onAddConcert)
+        navigate("/:username/concerts")
     }
 
     return (
