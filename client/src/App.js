@@ -18,6 +18,7 @@ function App() {
   const [ concerts, setConcerts ] = useState([])
   const [ artists, setArtists ] = useState([])
   const [ venues, setVenues ] = useState([])
+  const [ users, setUsers ] = useState([])
 
   //keep current user logged in
   useEffect(() => {
@@ -55,11 +56,26 @@ function App() {
     .then(venues => setVenues(venues))
   }, [])
 
+  //get all users
+  useEffect(() => {
+    fetch("/users")
+    .then(res => res.json())
+    .then(users => setUsers(users))
+  }, [])
+
 
   const updateUser = (user) => setUser(user)
 
   function handleLogout(){
     setUser(null);
+  }
+
+  const addNewArtist = (addArtist) => {
+    setArtists([addArtist, ...artists])
+  }
+
+  const addNewVenue = (addVenue) => {
+    setVenues([addVenue, ...venues])
   }
 
   return(
@@ -92,6 +108,9 @@ function App() {
           element={
             <AddNewConcert
               onLogout={handleLogout}
+              allArtists={artists}
+              allVenues={venues}
+              allUsers={users}
             />
           }
         />
@@ -113,6 +132,7 @@ function App() {
             <AddNewArtist
               onLogout={handleLogout}
               updateUser={updateUser}
+              onAddArtist={addNewArtist}
             />
           }
         />
@@ -134,6 +154,7 @@ function App() {
             <AddNewVenue
               onLogout={handleLogout}
               updateUser={updateUser}
+              onAddVenue={addNewVenue}
             />
           }
         />

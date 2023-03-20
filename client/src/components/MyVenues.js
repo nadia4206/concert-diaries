@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import VenueCard from './VenueCard'
+import { Link } from "react-router-dom";
 
 export default function MyVenues({onLogout, updateUser, allVenues}) {
 
@@ -14,6 +15,13 @@ export default function MyVenues({onLogout, updateUser, allVenues}) {
     return (
         <div>
             <NavBar onLogout={onLogout}/>
+            <div>
+                <Link to="/venue/new/:id">
+                    <button
+                        >add new venue
+                    </button>
+                </Link>
+            </div>
             <div>
                 <h1>venues</h1>
                 <div>{displayVenues}</div>

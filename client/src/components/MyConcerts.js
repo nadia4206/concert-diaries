@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import ConcertCard from './ConcertCard';
+import { Link } from "react-router-dom";
 
 export default function MyConcerts({onLogout, updateUser, allConcerts}) {
 
