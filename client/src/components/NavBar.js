@@ -16,11 +16,31 @@ export default function NavBar({onLogout}) {
     return (
         <div>
             <div>
-                <NavLink to={"/:username/concerts"}>the concert diaries</NavLink>
-                <NavLink to={"/:username/concerts/:id/edit"}>add concert</NavLink>
-                <NavLink to={"/:username/artists"}>artists</NavLink>
-                <NavLink to={"/:username/venues"}>venues</NavLink>
-                <Link onClick={handleLogout} to="/">logout</Link>
+                <header class="bg-gradient-to-r from-magenta to-purple font-Comfortaa text-white p-4">
+                    <div class="flex space-x-9">
+                        <NavLink
+                            to={"/concerts"}
+                            >home
+                        </NavLink>
+                        <NavLink
+                            to={"/new-concert"}
+                            >add concert
+                        </NavLink>
+                        <NavLink
+                            to={"/artists"}
+                            >artists
+                        </NavLink>
+                        <NavLink
+                            to={"/venues"}
+                            >venues
+                        </NavLink>
+                        <Link
+                            onClick={handleLogout} 
+                            to="/"
+                            >logout
+                        </Link>
+                    </div>
+                </header>
             </div>
         </div>
     )

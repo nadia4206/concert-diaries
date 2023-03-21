@@ -16,7 +16,7 @@ export default function MyVenues({onLogout, updateUser, allVenues}) {
         <div>
             <NavBar onLogout={onLogout}/>
             <div>
-                <Link to="/venue/new/:id">
+                <Link to="/new-venue">
                     <button
                         >add new venue
                     </button>

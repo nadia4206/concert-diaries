@@ -16,7 +16,7 @@ export default function MyArtists({allArtists, onLogout}) {
         <div>
             <NavBar onLogout={onLogout}/>
             <div>
-                <Link to="/artist/new/:id">
+                <Link to="/new-artist">
                     <button
                         >add new artist
                     </button>

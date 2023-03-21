@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import NavBar from './NavBar';
 
-export default function AddNewVenue({onAddVenue}) {
+export default function AddNewVenue({onAddVenue, onLogout}) {
 
     const initialState = {
         venue_name: "",
@@ -38,14 +39,19 @@ export default function AddNewVenue({onAddVenue}) {
             },
             body: JSON.stringify(newVenue)
         })
-        .then(res => res.json())
-        .then(onAddVenue)
-        navigate("/:username/venues")
-        setFormData(initialState)
+        .then(res => {
+            if(res.ok){
+                res.json().then(onAddVenue)
+                navigate("/venues")
+            } else {
+                res.json().then(alert("venue name, venue city, and venue image must be present"))
+            }
+        })
     };
 
     return (
         <div>
+            <NavBar onLogout={onLogout}/>
             <h1>add new venue</h1>
             <div>
                 <form onSubmit={handleSubmit}>

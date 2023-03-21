@@ -4,8 +4,9 @@ import VenueList from './VenueList'
 import UserList from './UserList';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import NavBar from './NavBar';
 
-export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddConcert }) {
+export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddConcert, onLogout }) {
 
     const displayArtists = allArtists.map((artist, index) => (
         <ArtistList
@@ -66,13 +67,19 @@ export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddCo
             },
             body: JSON.stringify(newConcert)
         })
-        .then( res => res.json())
-        .then(onAddConcert)
-        navigate("/:username/concerts")
+        .then(res => {
+            if(res.ok){
+                res.json().then(onAddConcert)
+                navigate("/concerts")
+            } else {
+                res.json().then(alert("user, artist, venue, and show date must be present"))
+            }
+        })
     }
 
     return (
         <div>
+            <NavBar onLogout={onLogout}/>
             <h1>add new concert</h1>
             <form onSubmit={handleSubmit}>
             <label>select user:</label>

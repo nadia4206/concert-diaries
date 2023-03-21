@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import NavBar from './NavBar';
 
-export default function AddNewArtist({onAddArtist}) {
+export default function AddNewArtist({onAddArtist, onLogout}) {
 
     const initialState = {
         artist_name: "",
@@ -36,14 +37,19 @@ export default function AddNewArtist({onAddArtist}) {
             },
             body: JSON.stringify(newArtist)
         })
-        .then(res => res.json())
-        .then(onAddArtist)
-        navigate("/:username/artists")
-        setFormData(initialState)
+        .then(res => {
+            if(res.ok){
+                res.json().then(onAddArtist)
+                navigate("/artists")
+            } else {
+                res.json().then(alert("artist name, genre, and image must be present"))
+            }
+        })
     }
 
     return (
         <div>
+            <NavBar onLogout={onLogout}/>
             <h1>add new artist</h1>
             <div>
                 <form onSubmit={handleSubmit}>
@@ -63,7 +69,7 @@ export default function AddNewArtist({onAddArtist}) {
                         value={formData.genre}
                         onChange={handleChange}
                     />
-                    <label>name:</label>
+                    <label>image:</label>
                     <input
                         type="text"
                         name="artist_image"

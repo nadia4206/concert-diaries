@@ -10,7 +10,6 @@ export default function SignUp() {
         password: ''
     })
 
-    const [ errors, setErrors ] = useState([])
     const navigate = useNavigate();
 
     const { email, username, password } = formData
@@ -30,10 +29,10 @@ export default function SignUp() {
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    navigate(`/${user.username}/concerts`)
+                    navigate("/concerts")
                 })
             } else {
-                res.json().then(json => setErrors(json.errors))
+                res.json().then(alert("email must be present, username must be unique, password must exist"))
             }
         })
     }
@@ -86,7 +85,7 @@ export default function SignUp() {
                         </button>
                     </div>
             </form>
-          </div>
+            </div>
         </div>
     )
 }
