@@ -13,18 +13,21 @@ export default function MyVenues({onLogout, updateUser, allVenues}) {
     ))
 
     return (
-        <div>
+        <div class="bg-background h-screen text-white font-Comfortaa">
             <NavBar onLogout={onLogout}/>
-            <div>
+            <div class="flex flex-row-reverse text-2xl p-3">
                 <Link to="/new-venue">
                     <button
+                        class="bg-pink rounded p-3 hover:bg-magenta"
                         >add new venue
                     </button>
                 </Link>
             </div>
-            <div>
+            <div class="text-6xl p-4">
                 <h1>venues</h1>
-                <div>{displayVenues}</div>
+            </div>
+            <div>
+                <div class="flex flex-wrap justify-items-start p-2 bg-background">{displayVenues}</div>
             </div>
         </div>
     )

@@ -44,43 +44,49 @@ export default function SignUp() {
 
 
     return (
-        <div>
+        <div class="bg-background h-screen font-Comfortaa">
             <div>
-                <h1>the concert diaries</h1>
+                <h1 class="text-6xl text-white p-4">the concert diaries</h1>
             </div>
             <div>
-                <h2>sign up</h2>
+                <div>
+                    <h2 class="text-white text-5xl text-center bg-gradient-to-r from-magenta to-purple p-5 mx-96 rounded">sign up</h2>
+                </div>
             </div>
-            <div>
+            <div class="bg-pink flex flex-col items-center justify-center p-2 mx-96 rounded">
                 <form onSubmit={onSubmit}>
-                    <label>email:</label>
+                    <label class="text-white text-xl">email:</label>
                         <input
                             name="email"
                             type="text"
                             placeholder="email"
                             value={email}
                             onChange={handleChange}
+                            class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
                         />
 
-                    <label>create username:</label>
+                    <label class="text-white text-xl">create username:</label>
                         <input
                             name="username"
                             type="text"
                             placeholder="username"
                             value={username}
                             onChange={handleChange}
+                            class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
                         />
-                    <label>create password:</label>
+                    <label class="text-white text-xl">create password:</label>
                         <input
                             name="password"
                             type="password"
                             placeholder="password"
                             value={password}
                             onChange={handleChange}
+                            class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
                         />
-                    <div>
+                    <div class="flex flex-col items-center">
                         <button
                             type="submit"
+                            class="text-white p-4 text-xl hover:bg-background rounded bg-magenta border"
                             >sign up
                         </button>
                     </div>
