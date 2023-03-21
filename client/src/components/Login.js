@@ -44,7 +44,7 @@ export default function Login({updateUser}) {
             </div>
             <div class="my-11">
                 <div>
-                    <h2 class="text-white text-4xl text-center bg-gradient-to-r from-magenta to-purple p-5 mx-96 rounded">login</h2>
+                    <h2 class="text-white text-5xl text-center bg-gradient-to-r from-magenta to-purple p-5 mx-96 rounded">login</h2>
                 </div>
                 <div class="bg-pink flex flex-col items-center justify-center p-2 mx-96 rounded">
                     <form onSubmit={handleSubmit}>
@@ -63,19 +63,19 @@ export default function Login({updateUser}) {
                             placeholder="password"
                             value={formData.password}
                             onChange={handleChange}
-                            class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
+                            class="w-full mr-3 py-5 px-4 h-2 rounded mb-4"
                         />
                         <div class="flex flex-col items-center">
                             <button
                                 type="submit"
-                                class="text-white p-4 text-3xl hover:bg-background rounded"
+                                class="text-white p-4 text-xl hover:bg-background rounded bg-magenta border mb-4"
                                 >login
                             </button>
                         </div>
                     </form>
                     <Link to="/signup">
                         <button
-                            class="text-white p-4 text-3xl hover:bg-background rounded"
+                            class="text-white p-4 text-xl hover:bg-background rounded bg-magenta border"
                             >sign up
                         </button>
                     </Link>

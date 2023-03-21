@@ -17,7 +17,7 @@ export default function MyConcerts({onLogout, allConcerts, onConcertDelete}) {
             <NavBar onLogout={onLogout}/>
             <div>
                 <h1 class="text-6xl p-4">concerts</h1>
-                <div class="flex flex-wrap justify-items-start p-2 bg-background h-screen">
+                <div class="flex flex-wrap justify-items-start p-2 bg-background">
                     {displayConcerts}
                 </div>
             </div>

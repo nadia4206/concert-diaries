@@ -78,61 +78,77 @@ export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddCo
     }
 
     return (
-        <div>
-            <NavBar onLogout={onLogout}/>
-            <h1>add new concert</h1>
-            <form onSubmit={handleSubmit}>
-            <label>select user:</label>
-                <select
-                    type="text"
-                    name="user_id"
-                    value={formData.user_id}
-                    onChange={handleChange}
-                    >{displayUsers}
-                </select>
-                <label>select artist:</label>
-                <select
-                    type="text"
-                    name="artist_id"
-                    value={formData.artist_id}
-                    onChange={handleChange}
-                    >{displayArtists}
-                </select>
-                <label>select venue:</label>
-                <select
-                    type="text"
-                    name="venue_id"
-                    value={formData.venue_id}
-                    onChange={handleChange}
-                    >{displayVenues}
-                </select>
-                <label>date:</label>
-                <input
-                    type="date"
-                    name="show_date"
-                    value={formData.show_date}
-                    onChange={handleChange}
-                />
-                <label>highlight:</label>
-                <input
-                    type="text"
-                    name="highlight"
-                    placeholder="concert highlight"
-                    value={formData.highlight}
-                    onChange={handleChange}
-                />
-                <label>image:</label>
-                <input
-                    type="text"
-                    name="image_url"
-                    placeholder="concert image url"
-                    value={formData.image_url}
-                    onChange={handleChange}
-                />
-                <div>
-                    <button>add concert</button>
-                </div>
-            </form>
+        <div class="bg-background h-screen font-Comfortaa">
+            <div class="mb-10">
+                <NavBar onLogout={onLogout}/>
+            </div>
+            <div>
+                <h1 class="text-white text-5xl text-center bg-gradient-to-r from-magenta to-purple p-5 mx-96 rounded">add new concert</h1>
+            </div>
+            <div class="bg-pink flex flex-col items-center justify-center p-2 mx-96 rounded">
+                <form onSubmit={handleSubmit}>
+                <label class="text-white text-xl">select user:</label>
+                    <select
+                        type="text"
+                        name="user_id"
+                        value={formData.user_id}
+                        onChange={handleChange}
+                        class="w-full mr-3 h-10 rounded mb-2"
+                        >{displayUsers}
+                    </select>
+                    <label class="text-white text-xl">select artist:</label>
+                    <select
+                        type="text"
+                        name="artist_id"
+                        value={formData.artist_id}
+                        onChange={handleChange}
+                        class="w-full mr-3 h-10 rounded mb-2"
+                        >{displayArtists}
+                    </select>
+                    <label class="text-white text-xl">select venue:</label>
+                    <select
+                        type="text"
+                        name="venue_id"
+                        value={formData.venue_id}
+                        onChange={handleChange}
+                        class="w-full mr-3 h-10 rounded mb-2"
+                        >{displayVenues}
+                    </select>
+                    <label class="text-white text-xl">date:</label>
+                    <input
+                        type="date"
+                        name="show_date"
+                        value={formData.show_date}
+                        onChange={handleChange}
+                        class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
+                    />
+                    <label class="text-white text-xl">highlight:</label>
+                    <input
+                        type="text"
+                        name="highlight"
+                        placeholder="concert highlight"
+                        value={formData.highlight}
+                        onChange={handleChange}
+                        class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
+                    />
+                    <label class="text-white text-xl">image:</label>
+                    <input
+                        type="text"
+                        name="image_url"
+                        placeholder="concert image url"
+                        value={formData.image_url}
+                        onChange={handleChange}
+                        class="w-full mr-3 py-5 px-4 h-2 rounded mb-2"
+                    />
+                    <div class="flex flex-col items-center">
+                        <button
+                            type="submit"
+                            class="text-white p-4 text-3xl hover:bg-background rounded bg-magenta border"
+                            >add concert
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
