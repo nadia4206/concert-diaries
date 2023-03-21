@@ -7,8 +7,9 @@ import MyArtists from './components/MyArtists';
 import MyVenues from './components/MyVenues';
 import AddNewArtist from "./components/AddNewArtist";
 import AddNewVenue from "./components/AddNewVenue";
-import EditProfile from "./components/EditProfile"
 import SignUp from "./components/SignUp"
+import UpdateConcert from "./components/UpdateConcert"
+// import EditProfile from "./components/EditProfile"
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
       if(res.ok){
         res.json().then(user => {
           setUser(user)
-          navigate(`/${user.username}/concerts`)
+          navigate('/concerts')
         })
       } else {
         setUser(null)
@@ -64,22 +65,59 @@ function App() {
   }, [])
 
 
+  //set user at login
   const updateUser = (user) => setUser(user)
 
+  //logout user
   function handleLogout(){
     setUser(null);
   }
 
+  //add new artist
   const addNewArtist = (addArtist) => {
     setArtists([addArtist, ...artists])
   }
 
+  //add new venue
   const addNewVenue = (addVenue) => {
     setVenues([addVenue, ...venues])
   }
 
+  //add new concert
   const addNewConcert = (addConcert) => {
     setConcerts([addConcert, ...concerts])
+  }
+
+  //update concert
+  const editConcert = (editedConcert) => {
+    const updatedConcerts = concerts.map((origConcert) => {
+      if (origConcert.id === editedConcert.id) {
+        return editedConcert;
+      } else {
+        return origConcert;
+      }
+    })
+      setConcerts(updatedConcerts)
+  }
+
+  //update profile
+
+  // const editProfile = (editedProfile) => {
+  //   const updatedUsers = users.map((origUser) => {
+  //     if (origUser.id === editedProfile.id) {
+  //       return editedProfile
+  //     } else {
+  //       return origUser
+  //     }
+  //   })
+  //     setUsers(updatedUsers)
+  // }
+
+  //delete concert
+  const archiveConcert = (concertToDelete) => {
+    const updatedConcertList = concerts.filter(concert => (
+      concert.id !== concertToDelete.id))
+        setConcerts(updatedConcertList)
   }
 
   return(
@@ -97,18 +135,19 @@ function App() {
         />
 
         <Route
-          path="/:username/concerts"
+          path="/concerts"
           element={
             <MyConcerts
               onLogout={handleLogout}
               updateUser={updateUser}
               allConcerts={concerts}
+              onConcertDelete={archiveConcert}
             />
           }
         />
 
         <Route
-          path="/:username/concerts/:id/edit"
+          path="/new-concert"
           element={
             <AddNewConcert
               onLogout={handleLogout}
@@ -121,7 +160,7 @@ function App() {
         />
 
         <Route
-          path="/:username/artists"
+          path="/artists"
           element={
             <MyArtists
               onLogout={handleLogout}
@@ -132,7 +171,7 @@ function App() {
         />
 
         <Route
-          path="/artist/new/:id"
+          path="/new-artist"
           element={
             <AddNewArtist
               onLogout={handleLogout}
@@ -143,7 +182,7 @@ function App() {
         />
 
         <Route
-          path="/:username/venues"
+          path="/venues"
           element={
             <MyVenues
               onLogout={handleLogout}
@@ -154,7 +193,7 @@ function App() {
         />
 
         <Route
-          path="/venue/new/:id"
+          path="/new-venue"
           element={
             <AddNewVenue
               onLogout={handleLogout}
@@ -165,14 +204,24 @@ function App() {
         />
 
         <Route
-          path="/profile/edit/:id"
+          path="/concert/:id/edit"
           element={
-            <EditProfile
+            <UpdateConcert
               onLogout={handleLogout}
-              updateUser={updateUser}
+              onUpdatedConcert={editConcert}
             />
           }
         />
+
+        {/* <Route
+          path="/profile/:id/edit"
+          element={
+            <EditProfile
+              onLogout={handleLogout}
+              onUpdatedProfile={editProfile}
+            />
+          }
+        /> */}
 
       </Routes>
   </div>
