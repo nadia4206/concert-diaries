@@ -94,7 +94,8 @@ export default function AddNewConcert({ allArtists, allVenues, allUsers, onAddCo
                         value={formData.user_id}
                         onChange={handleChange}
                         class="w-full mr-3 h-10 rounded mb-2"
-                        >{displayUsers}
+                        >
+                        {displayUsers}
                     </select>
                     <label class="text-white text-xl">select artist:</label>
                     <select

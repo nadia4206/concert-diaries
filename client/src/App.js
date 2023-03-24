@@ -9,7 +9,7 @@ import AddNewArtist from "./components/AddNewArtist";
 import AddNewVenue from "./components/AddNewVenue";
 import SignUp from "./components/SignUp"
 import UpdateConcert from "./components/UpdateConcert"
-// import EditProfile from "./components/EditProfile"
+import { Suspense } from 'react';
 
 function App() {
 
@@ -41,7 +41,13 @@ function App() {
     fetch("/shows")
     .then(res => res.json())
     .then(concerts => setConcerts(concerts))
-}, [])
+    }, [])
+
+    useEffect(() => {
+      fetch("/shows")
+        .then((res) => res.json())
+        .then((concerts) => setConcerts(concerts));
+    }, []);
 
   //get all artists
   useEffect(() => {
@@ -100,19 +106,6 @@ function App() {
       setConcerts(updatedConcerts)
   }
 
-  //update profile
-
-  // const editProfile = (editedProfile) => {
-  //   const updatedUsers = users.map((origUser) => {
-  //     if (origUser.id === editedProfile.id) {
-  //       return editedProfile
-  //     } else {
-  //       return origUser
-  //     }
-  //   })
-  //     setUsers(updatedUsers)
-  // }
-
   //delete concert
   const archiveConcert = (concertToDelete) => {
     const updatedConcertList = concerts.filter(concert => (
@@ -137,12 +130,12 @@ function App() {
         <Route
           path="/concerts"
           element={
-            <MyConcerts
-              onLogout={handleLogout}
-              updateUser={updateUser}
-              allConcerts={concerts}
-              onConcertDelete={archiveConcert}
-            />
+              <MyConcerts
+                onLogout={handleLogout}
+                updateUser={updateUser}
+                allConcerts={concerts}
+                onConcertDelete={archiveConcert}
+              />
           }
         />
 
