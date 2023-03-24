@@ -1,16 +1,21 @@
 import React from 'react'
 import NavBar from './NavBar'
 import ConcertCard from './ConcertCard';
+import { Suspense } from 'react';
 
 export default function MyConcerts({onLogout, allConcerts, onConcertDelete}) {
 
     const displayConcerts = allConcerts.map((concert, index) => (
-        <ConcertCard
-            key={index}
-            concert={concert}
-            onConcertDelete={onConcertDelete}
-        />
+            <ConcertCard
+                key={index}
+                concert={concert}
+                onConcertDelete={onConcertDelete}
+            />
     ))
+
+    if (displayConcerts === undefined) {
+        return <>Still loading...</>;
+    }
 
     return (
         <div class="bg-background h-screen text-white font-Comfortaa">

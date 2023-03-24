@@ -16,7 +16,7 @@ export default function NavBar({onLogout}) {
     return (
         <div>
             <div>
-                <header class="bg-gradient-to-r from-magenta to-purple font-Comfortaa text-white p-4">
+                <header class="bg-gradient-to-r from-magenta to-purple font-Comfortaa text-white p-6">
                     <div class="flex space-x-9">
                         <NavLink
                             to={"/concerts"}
@@ -40,6 +40,12 @@ export default function NavBar({onLogout}) {
                             >logout
                         </Link>
                     </div>
+                    {/* <div>
+                        <img 
+                            src="https://cdn-icons-png.flaticon.com/512/5854/5854842.png"
+                            class="object-contain h-18 w-16 absolute right-1 top-1 text-white"
+                        />
+                    </div> */}
                 </header>
             </div>
         </div>
