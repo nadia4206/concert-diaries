@@ -11,8 +11,7 @@ This app allows a user to keep track of the concerts they’ve attended. A user 
 - add a new artist
 - view all venues
 - add a new venue
-- edit profile
-- delete profile
+- create an account
 
 
 # github repo
